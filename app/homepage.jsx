@@ -122,7 +122,7 @@ const Homepage = () => {
       href: "https://digipinlocator.site/",
       src: "/locatordigipin.png",
       alt: "DigPinLocator",
-      title: "DigPinLocator - India's Digital Address System",
+      title: "DigiPinLocator - India's Digital Address System",
       description:
         "A user-friendly web app built on India Post's open-source backend that instantly finds your digital address, decodes any Digipin, and displays it on an interactive OpenStreetMap.",
       techLogos: [
