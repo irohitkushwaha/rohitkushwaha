@@ -1,5 +1,5 @@
 
-name: Deploy BerojgariBhatta Frontend
+name: Deploy rohitkushwaha.com Frontend
 
 on:
   push:
@@ -57,8 +57,8 @@ jobs:
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         script: |
           # Clean up existing deployment
-          sudo rm -rf /var/www/berojgaribhatta
-          sudo mkdir -p /var/www/berojgaribhatta
+          sudo rm -rf /var/www/rohitkushwaha
+          sudo mkdir -p /var/www/rohitkushwaha
           sudo npm install -g pm2 || echo "PM2 already installed"
           
 
@@ -70,9 +70,9 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         script: |
-          sudo mkdir -p /var/www/berojgaribhatta
-          sudo chown -R ${{ secrets.DIGITALOCEAN_USER }}: /var/www/berojgaribhatta
-          sudo chmod -R 755 /var/www/berojgaribhatta
+          sudo mkdir -p /var/www/rohitkushwaha
+          sudo chown -R ${{ secrets.DIGITALOCEAN_USER }}: /var/www/rohitkushwaha
+          sudo chmod -R 755 /var/www/rohitkushwaha
           
     - name: 🚀 Deploy to Digital Ocean
       uses: appleboy/scp-action@v0.1.7
@@ -81,7 +81,7 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         source: ".next,package.json,package-lock.json,public,next.config.mjs"
-        target: "/var/www/berojgaribhatta/"
+        target: "/var/www/rohitkushwaha/"
         strip_components: 0
         overwrite: true
         
@@ -94,10 +94,10 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         script: |
-          sudo chown -R ${{ secrets.DIGITALOCEAN_USER }}: /var/www/berojgaribhatta
-          sudo chmod -R 755 /var/www/berojgaribhatta
-          sudo find /var/www/berojgaribhatta -type d -exec chmod 755 {} \;
-          sudo find /var/www/berojgaribhatta -type f -exec chmod 644 {} \;
+          sudo chown -R ${{ secrets.DIGITALOCEAN_USER }}: /var/www/rohitkushwaha
+          sudo chmod -R 755 /var/www/rohitkushwaha
+          sudo find /var/www/rohitkushwaha -type d -exec chmod 755 {} \;
+          sudo find /var/www/rohitkushwaha -type f -exec chmod 644 {} \;
 
     - name: ✅ VERIFY COPY - Check if files were copied to server
       uses: appleboy/ssh-action@v1.0.3
@@ -107,7 +107,7 @@ jobs:
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         script: |
           echo "=== SERVER FILE VERIFICATION ==="
-          cd /var/www/berojgaribhatta
+          cd /var/www/rohitkushwaha
           
           echo "📁 Current directory contents:"
           ls -la
@@ -141,7 +141,7 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         script: |
-          cd /var/www/berojgaribhatta
+          cd /var/www/rohitkushwaha
           
           echo "=== FINAL DEPLOYMENT CHECK ==="
           
@@ -162,9 +162,9 @@ jobs:
           
           # Start/restart the application
           echo "🚀 Starting application..."
-          pm2 restart berojgaribhatta || pm2 start npm --name "berojgaribhatta" -- start
+          pm2 restart rohitkushwaha || pm2 start npm --name "rohitkushwaha" -- start
           
           # Show final status
           echo "=== DEPLOYMENT STATUS ==="
           pm2 status
-          pm2 logs berojgaribhatta --lines 10 --nostream
+          pm2 logs rohitkushwaha --lines 10 --nostream
