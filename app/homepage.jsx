@@ -84,6 +84,47 @@ const Homepage = () => {
 
   const projects = [
     {
+      href: "https://modelxpert.com/",
+      src: "/modelxpert-hero.webp",
+      alt: "ModelXpert",
+      title: "ModelXpert: AI Command Center",
+      description:
+        "Access ChatGPT, Claude, Gemini, Grok, DeepSeek, and Perplexity in one platform—ask once, compare responses side-by-side, get auto expert model selection, and enhance prompts instantly, all in one subscription.",
+      techLogos: [
+        { src: "/nextjs.png", alt: "React.js" },
+        { src: "/nodejs.png", alt: "Node.js" },
+        // { src: "/expressjs.png", alt: "Express.js" },
+        { src: "/gemini.png", alt: "Gemini API" },
+        { src: "/mongodb.png", alt: "MongoDB" },
+        { src: "/gcp.png", alt: "Google Cloud Platform" },
+        { src: "/grok.jpg", alt: "grok" },
+        { src: "/openai.png", alt: "openai" },
+        { src: "/perplexity.webp", alt: "perplexity" },
+        // { src: "/deepseek.png", alt: "deepseek" },
+        { src: "/anthropic.png", alt: "anthropic" },
+
+      ],
+    },
+    {
+      href: "https://callertune.io/",
+      src: "/callcoach.webp",
+      alt: "CallCoach",
+      title: "Sales Call Analyzer & Real-Time Suggestions",
+      description:
+        "AI-powered platform that boosts sales close rates by providing real-time conversation guidance during calls and post-call analytics including call score, tone analysis, buying signals, strengths, weaknesses, objection handling, and full transcription.",
+      techLogos: [
+        { src: "/nodejs.png", alt: "Node.js" },
+        { src: "/expressjs.png", alt: "Express.js" },
+        { src: "/websocket.png", alt: "WebSocket" },
+        { src: "/gemini.png", alt: "Gemini API" },
+        { src: "/mongodb.png", alt: "MongoDB" },
+        { src: "/nextjs.png", alt: "React.js" },
+
+
+        { src: "/aws.png", alt: "Amazon web service - server" },
+      ],
+    },
+    {
       href: "https://socialhub.rohitkushwaha.com/",
       src: "/youtube-socialhub.webp",
       alt: "SocialHub",
@@ -356,8 +397,8 @@ const Homepage = () => {
             willErase={true}
             loop={true}
             className="bg-gradient-to-r from-blue-200 via-slate-100 to-blue-300 bg-clip-text text-transparent"
-            onComplete={() => {}}
-            onTextUpdate={(text) => {}}
+            onComplete={() => { }}
+            onTextUpdate={(text) => { }}
           />
         </div>
 
@@ -506,8 +547,8 @@ const Homepage = () => {
           </div>
 
           {/* Row 2 */}
-          <div className="flex justify-center gap-8 max-w-3xl mx-auto">
-            {projects.slice(2, 3).map((project, index) => (
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.slice(2, 4).map((project, index) => (
               <AnimateOnScroll
                 key={index}
                 animationClass="animate-slide-in-bottom"
